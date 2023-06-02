@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update cache
+      apt:
+        force_apt_get: true
+        update_cache: true
+        stage: present
+  tasks: 
+    - include: tasks/zsh.yml
+    - include: tasks/nvim.yml
+    - include: tasks/tools.yml
+    
