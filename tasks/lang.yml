@@ -1,0 +1,13 @@
+- name: python3.9
+  apt:
+    name: python3.9
+    state: present
+  tags:
+    - install
+    - lang
+
+- name: rust
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
+  tags:
+    - install
+    - lang

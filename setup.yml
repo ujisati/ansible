@@ -10,4 +10,5 @@
     - include: tasks/zsh.yml
     - include: tasks/nvim.yml
     - include: tasks/tools.yml
+    - include: tasks/lang.yml
     
