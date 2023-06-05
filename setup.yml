@@ -1,19 +1,20 @@
 - hosts: localhost
   become: true
+  become_user: harry
   vars:
-    source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-    personal: "{{ lookup('env', 'HOME') }}/personal"
+    source_key: "./secrets/id_rsa"
+    dest_key: "~/.ssh/id_rsa"
+    personal: "~/personal"
   pre_tasks:
     - name: Update cache
       apt:
         force_apt_get: true
         update_cache: true
-        stage: present
   tasks: 
     - include: tasks/zsh.yml
     - include: tasks/nvim.yml
     - include: tasks/tools.yml
     - include: tasks/lang.yml
     - include: tasks/ssh.yml
+    - include: tasks/dotfiles.yml
     

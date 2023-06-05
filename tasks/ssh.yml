@@ -3,6 +3,8 @@
     dest: "{{ dest_key | dirname }}"
     mode: 0700
     state: directory
+  become: true
+  become_user: harry
   tags:
     - dotfiles
     - install
@@ -12,14 +14,9 @@
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
     mode: 0600
+  become: true
+  become_user: harry
   tags:
     - dotfiles
     - install
     - ssh
-- name: Set authorized key took from file
-  authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
-    state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
-  with_fileglob:
-  - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"

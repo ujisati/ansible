@@ -1,7 +1,15 @@
+- name: python ppa
+  become: true
+  apt_repository:
+   repo: ppa:deadsnakes/ppa
+   update_cache: True
+  tags:
+    - install
+    - lang   
 - name: python3.9
   apt:
     name: python3.9
-    state: present
+    force_apt_get: true
   tags:
     - install
     - lang
