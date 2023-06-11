@@ -1,9 +1,8 @@
 - name: Install yadm
+  become: true
   apt:
     name: yadm
     force_apt_get: true
-  become: true
-  become_user: harry
   tags:
     - install
     - dotfiles
@@ -11,7 +10,7 @@
 
 - name: Clone dotfiles
   ansible.builtin.shell:
-    cmd: yadm clone git@github.com:ujisati/.dotfiles.git -f
+    cmd: yadm clone git@github.com:ujisati/.dotfiles.git -f -b main
   tags:
     - yadm
     - install

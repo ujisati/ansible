@@ -1,6 +1,4 @@
 - hosts: localhost
-  become: true
-  become_user: harry
   vars:
     source_key: "./secrets/id_rsa"
     dest_key: "~/.ssh/id_rsa"
@@ -10,6 +8,7 @@
       apt:
         force_apt_get: true
         update_cache: true
+      become: true
   tasks: 
     - include: tasks/zsh.yml
     - include: tasks/nvim.yml

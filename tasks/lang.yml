@@ -1,20 +1,21 @@
 - name: python ppa
   become: true
-  apt_repository:
-   repo: ppa:deadsnakes/ppa
-   update_cache: True
+  shell: add-apt-repository ppa:deadsnakes/ppa -y
   tags:
     - install
     - lang   
-- name: python3.9
+
+- name: python3.11
+  become: true
   apt:
-    name: python3.9
+    name: python3.11
     force_apt_get: true
   tags:
     - install
     - lang
 
 - name: rust
+  become: true
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
   tags:
     - install

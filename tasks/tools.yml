@@ -1,4 +1,5 @@
 - name: Install packages
+  become: true
   apt:
     name: [ "tmux", "wireshark", "fzf", "bat", "tldr", "ripgrep", "xclip"]
   tags:

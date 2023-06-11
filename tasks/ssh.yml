@@ -3,8 +3,6 @@
     dest: "{{ dest_key | dirname }}"
     mode: 0700
     state: directory
-  become: true
-  become_user: harry
   tags:
     - dotfiles
     - install
@@ -14,8 +12,6 @@
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
     mode: 0600
-  become: true
-  become_user: harry
   tags:
     - dotfiles
     - install
