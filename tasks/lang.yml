@@ -4,6 +4,7 @@
   tags:
     - install
     - lang   
+    - python
 
 - name: python3.11
   become: true
@@ -13,6 +14,7 @@
   tags:
     - install
     - lang
+    - python
 
 - name: rust
   become: true
@@ -20,3 +22,13 @@
   tags:
     - install
     - lang
+    - rust
+
+- name: Install nodejs and npm
+  become: true
+  apt:
+    name: ["nodejs", "npm"]
+  tags:
+    - install
+    - lang
+    - node
