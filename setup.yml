@@ -10,10 +10,10 @@
         update_cache: true
       become: true
   tasks: 
+    - include: tasks/ssh.yml
+    - include: tasks/dotfiles.yml
     - include: tasks/zsh.yml
     - include: tasks/nvim.yml
     - include: tasks/tools.yml
     - include: tasks/lang.yml
-    - include: tasks/ssh.yml
-    - include: tasks/dotfiles.yml
     

@@ -9,7 +9,7 @@
     - yadm
 
 - name: Clone dotfiles
-  ansible.builtin.shell:
+  shell:
     cmd: yadm clone git@github.com:ujisati/.dotfiles.git -f -b main
   tags:
     - yadm
