@@ -1,5 +1,4 @@
 - name: Install ZSH
-  become: true
   apt: name=zsh
   tags:
     - zsh
@@ -13,7 +12,6 @@
     - install
 
 - name: Oh-My-Zsh
-  become: true
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && yes n | ~/.oh-my-installer
   tags:
     - zsh
