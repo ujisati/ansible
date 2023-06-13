@@ -1,4 +1,5 @@
 - name: Install ZSH
+  become: true
   apt: name=zsh
   tags:
     - zsh
