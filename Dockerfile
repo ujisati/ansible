@@ -11,7 +11,7 @@ RUN apt-get install -y curl git ansible build-essential neovim
 RUN apt-get clean autoclean
 RUN apt-get autoremove --yes
 
-FROM base AS helm
+FROM base AS test
 ARG TAGS
 RUN addgroup --gid 1000 harry
 RUN adduser --gecos harry --uid 1000 --gid 1000 harry
@@ -21,6 +21,6 @@ RUN echo "harry:test" | chpasswd
 USER harry
 WORKDIR /home/harry
 
-FROM helm
+FROM test
 COPY . .
 # CMD ["sh", "-c", "ansible-playbook setup.yml"]
