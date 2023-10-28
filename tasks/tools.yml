@@ -5,3 +5,14 @@
   tags:
     - install
     - productivity
+
+- name: tmux plugin manager # Don't forget prefix + I to install plugins in tmux
+  become: true
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "~/.tmux/plugins/tpm"
+  tags:
+    - install
+    - productivity
+
+
