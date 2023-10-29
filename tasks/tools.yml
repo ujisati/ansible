@@ -3,8 +3,7 @@
   apt:
     name: [ "tmux", "wireshark", "fzf", "bat", "tldr", "ripgrep", "xclip"]
   tags:
-    - install
-    - productivity
+    - tools
 
 - name: tmux plugin manager # Don't forget prefix + I to install plugins in tmux
   become: true
@@ -12,7 +11,6 @@
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "~/.tmux/plugins/tpm"
   tags:
-    - install
-    - productivity
+    - tools
 
 

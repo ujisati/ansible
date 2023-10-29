@@ -4,14 +4,12 @@
     name: yadm
     force_apt_get: true
   tags:
-    - install
-    - dotfiles
     - yadm
+    - dotfiles
 
 - name: Clone dotfiles
   shell:
     cmd: yadm clone git@github.com:ujisati/.dotfiles.git -f -b main
   tags:
     - yadm
-    - install
     - dotfiles 

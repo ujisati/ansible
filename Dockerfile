@@ -23,4 +23,3 @@ WORKDIR /home/harry
 
 FROM test
 COPY . .
-# CMD ["sh", "-c", "ansible-playbook setup.yml"]

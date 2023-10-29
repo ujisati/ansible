@@ -2,7 +2,6 @@
   become: true
   shell: add-apt-repository ppa:deadsnakes/ppa -y
   tags:
-    - install
     - lang   
     - python
 
@@ -12,14 +11,12 @@
     name: python3.11
     force_apt_get: true
   tags:
-    - install
     - lang
     - python
 
 - name: rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
   tags:
-    - install
     - lang
     - rust
 
@@ -28,6 +25,5 @@
   apt:
     name: ["nodejs", "npm"]
   tags:
-    - install
     - lang
     - node

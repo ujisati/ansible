@@ -3,20 +3,11 @@
   apt: name=zsh
   tags:
     - zsh
-    - install
     
-- name: Change shell to zsh
-  become: true
-  shell: chsh -s $(which zsh)
-  tags:
-    - zsh
-    - install
-
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && yes n | ~/.oh-my-installer
   tags:
     - zsh
-    - install
 
 - name: Install zsh-autosuggestions
   ansible.builtin.git:
@@ -24,7 +15,6 @@
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags:
     - zsh
-    - install
 
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
@@ -32,7 +22,6 @@
     dest: ~/.oh-my-zsh/pluguins/zsh-syntax-highlighting
   tags:
     - zsh
-    - install
 
 - name: Install pure zsh
   ansible.builtin.git: 
@@ -40,4 +29,9 @@
     dest: "~/.oh-my-zsh/plugins/pure"
   tags:
     - zsh
-    - install
+
+- name: Change shell to zsh
+  become: true
+  shell: chsh -s $(which zsh)
+  tags:
+    - zsh

@@ -2,7 +2,6 @@
   become: true
   shell: add-apt-repository ppa:neovim-ppa/unstable -y
   tags:
-    - install
     - neovim
 
 - name: Update cache
@@ -16,7 +15,6 @@
   apt:
     name: ["neovim"]
   tags:
-    - install
     - neovim
 
 # todo: lazyvim
