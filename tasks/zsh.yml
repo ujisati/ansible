@@ -3,6 +3,11 @@
   apt: name=zsh
   tags:
     - zsh
+
+- name: Remove old zsh
+  shell: gio trash ~/.oh-my-zsh/
+  tags:
+    - zsh
     
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && yes n | ~/.oh-my-installer
@@ -19,7 +24,7 @@
 - name: Install zsh-syntax-highlighting
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    dest: ~/.oh-my-zsh/pluguins/zsh-syntax-highlighting
+    dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"
   tags:
     - zsh
 

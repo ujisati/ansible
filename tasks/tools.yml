@@ -6,9 +6,8 @@
     - tools
 
 - name: tmux plugin manager # Don't forget prefix + I to install plugins in tmux
-  become: true
   ansible.builtin.git:
-    repo: "https://github.com/tmux-plugins/tpm"
+    repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "~/.tmux/plugins/tpm"
   tags:
     - tools
