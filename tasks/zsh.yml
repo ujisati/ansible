@@ -36,7 +36,6 @@
     - zsh
 
 - name: Change shell to zsh
-  become: true
   shell: chsh -s $(which zsh)
   tags:
     - zsh
