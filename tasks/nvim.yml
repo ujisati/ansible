@@ -10,6 +10,26 @@
     force_apt_get: true
     update_cache: true
 
+- name: Clean old neovim
+  become: true
+  apt:
+    name: neovim
+    state: absent
+    purge: yes
+    update_cache: yes   
+  tags:
+    - neovim
+
+- name: Clean old neovim-runtime
+  become: true
+  apt:
+    name: neovim-runtime
+    state: absent
+    purge: yes
+    update_cache: yes   
+  tags:
+    - neovim
+      
 - name: Install neovim
   become: true
   apt:
@@ -17,4 +37,42 @@
   tags:
     - neovim
 
-# todo: lazyvim
+- name: Backup ~/.config/nvim
+  command: mv ~/.config/nvim ~/.config/nvim.bak
+  ignore_errors: yes
+  tags:
+    - neovim
+
+- name: Backup ~/.local/share/nvim
+  command: mv ~/.local/share/nvim ~/.local/share/nvim.bak
+  ignore_errors: yes
+  tags:
+    - neovim
+
+- name: Backup ~/.local/state/nvim
+  command: mv ~/.local/state/nvim ~/.local/state/nvim.bak
+  ignore_errors: yes
+  tags:
+    - neovim
+
+- name: Backup ~/.cache/nvim
+  command: mv ~/.cache/nvim ~/.cache/nvim.bak
+  ignore_errors: yes
+  tags:
+    - neovim
+
+- name: Clone LazyVim/starter repository
+  git:
+    repo: https://github.com/LazyVim/starter
+    dest: ~/.config/nvim
+    force: yes
+  tags:
+    - neovim
+
+- name: Remove Git directory inside ~/.config/nvim
+  file:
+    path: ~/.config/nvim/.git
+    state: absent
+  tags:
+    - neovim
+
