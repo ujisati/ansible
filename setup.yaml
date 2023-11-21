@@ -3,12 +3,13 @@
     source_key: "./secrets/id_rsa"
     dest_key: "~/.ssh/id_rsa"
     personal: "~/personal"
-  pre_tasks:
-    - name: Update cache
-      apt:
-        force_apt_get: true
-        update_cache: true
-      become: true
+    username: "harry"
+    pre_tasks:
+      - name: Update cache
+        apt:
+          force_apt_get: true
+          update_cache: true
+        become: true
   tasks: 
     - include: tasks/ssh.yml
     - include: tasks/dotfiles.yml

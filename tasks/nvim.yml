@@ -43,6 +43,12 @@
   tags:
     - neovim
 
+- name: Remove ~/.config/nvim
+  command: gio trash ~/.config/nvim
+  ignore_errors: yes
+  tags:
+    - neovim
+      
 - name: Backup ~/.local/share/nvim
   command: mv ~/.local/share/nvim ~/.local/share/nvim.bak
   ignore_errors: yes
