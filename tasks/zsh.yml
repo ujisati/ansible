@@ -6,6 +6,7 @@
 
 - name: Remove old zsh
   shell: gio trash ~/.oh-my-zsh/
+  ignore_errors: true
   tags:
     - zsh
     
