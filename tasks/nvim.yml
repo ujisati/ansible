@@ -1,44 +1,27 @@
-- name: Neovim ppa
+- name: Download nvim.appimage
   become: true
-  shell: add-apt-repository ppa:neovim-ppa/unstable -y
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+    dest: /usr/local/bin/nvim.appimage
+    mode: '0755'
   tags:
     - neovim
 
-- name: Update cache
+- name: Update alternatives for various editor links
   become: true
-  apt:
-    force_apt_get: true
-    update_cache: true
-
-- name: Clean old neovim
-  become: true
-  apt:
-    name: neovim
-    state: absent
-    purge: yes
-    update_cache: yes   
-  tags:
-    - neovim
-
-- name: Clean old neovim-runtime
-  become: true
-  apt:
-    name: neovim-runtime
-    state: absent
-    purge: yes
-    update_cache: yes   
-  tags:
-    - neovim
-      
-- name: Install neovim
-  become: true
-  apt:
-    name: ["neovim"]
+  command:
+    cmd: "update-alternatives --install /usr/bin/{{ item.cmd }} {{ item.cmd }} /usr/local/bin/nvim.appimage 110"
+  loop:
+    - { cmd: 'ex' }
+    - { cmd: 'vi' }
+    - { cmd: 'view' }
+    - { cmd: 'vim' }
+    - { cmd: 'vimdiff' }
   tags:
     - neovim
 
 - name: Backup ~/.config/nvim
-  command: mv ~/.config/nvim ~/.config/nvim.bak
+  command: mv -f ~/.config/nvim ~/.config/nvim.bak
   ignore_errors: yes
   tags:
     - neovim
@@ -50,19 +33,19 @@
     - neovim
       
 - name: Backup ~/.local/share/nvim
-  command: mv ~/.local/share/nvim ~/.local/share/nvim.bak
+  command: mv -f ~/.local/share/nvim ~/.local/share/nvim.bak
   ignore_errors: yes
   tags:
     - neovim
 
 - name: Backup ~/.local/state/nvim
-  command: mv ~/.local/state/nvim ~/.local/state/nvim.bak
+  command: mv -f  ~/.local/state/nvim ~/.local/state/nvim.bak
   ignore_errors: yes
   tags:
     - neovim
 
 - name: Backup ~/.cache/nvim
-  command: mv ~/.cache/nvim ~/.cache/nvim.bak
+  command: mv -f ~/.cache/nvim ~/.cache/nvim.bak
   ignore_errors: yes
   tags:
     - neovim
